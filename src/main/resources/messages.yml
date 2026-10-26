@@ -1,0 +1,46 @@
+# PlatipoAste - messages.yml
+# Supporta codici legacy (&a, &#RRGGBB) e MiniMessage. {prefix} è sostituito automaticamente.
+# Lascia una stringa vuota ("") per disattivare un messaggio.
+prefix: "&8[&6Aste&8] &r"
+
+no-permission: "{prefix}&cNon hai il permesso."
+players-only: "{prefix}&cSolo i giocatori possono usare questo comando."
+reload-done: "{prefix}&aConfigurazione e messaggi ricaricati."
+
+setcurrency-usage: "{prefix}&cUso: /ahsetcurrency <moneta|pila|sacco|liquida>"
+setcurrency-invalid: "{prefix}&cTipo di valuta non valido."
+setcurrency-no-item: "{prefix}&cDevi tenere un oggetto nella mano principale."
+setcurrency-success: "{prefix}&aItem salvato per la valuta &e{currency}&a."
+
+purchase-success: "{prefix}&aHai acquistato &f{item} &ax{amount} &aper &6{price} &amonete."
+purchase-no-funds: "{prefix}&cFondi insufficienti. Prezzo: &6{price}&c, saldo: &6{balance}&c."
+purchase-gone: "{prefix}&cQuesta inserzione non esiste più."
+purchase-busy: "{prefix}&cQuesta inserzione è in fase di acquisto da un altro giocatore."
+purchase-no-space: "{prefix}&cNon hai abbastanza spazio nell'inventario per l'oggetto e l'eventuale resto."
+purchase-error: "{prefix}&cErrore durante l'acquisto. Nessuna valuta è stata prelevata."
+seller-notify: "{prefix}&a{buyer} ha comprato &f{item} &aper &6{price} &amonete. Riscuoti dal menu /ah."
+
+cancel-success: "{prefix}&aHai ritirato &f{item}&a dal mercato."
+cancel-no-space: "{prefix}&cNon hai spazio nell'inventario per ritirare l'oggetto."
+cancel-not-owner: "{prefix}&cQuesta inserzione non è tua."
+
+sell-no-permission: "{prefix}&cNon puoi mettere oggetti in vendita."
+sell-select-first: "{prefix}&cSeleziona prima un oggetto dal tuo inventario."
+sell-invalid-item: "{prefix}&cOggetto non valido."
+sell-blacklisted: "{prefix}&cQuesto oggetto non può essere venduto."
+sell-currency-forbidden: "{prefix}&cNon puoi vendere la valuta."
+sell-selected: "{prefix}&7Selezionato: &f{item} &7x{amount}"
+sell-price-low: "{prefix}&cIl prezzo minimo è &6{min}&c."
+sell-price-high: "{prefix}&cIl prezzo massimo è &6{max}&c."
+sell-changed: "{prefix}&cL'oggetto selezionato è cambiato nell'inventario. Riseleziona."
+sell-limit: "{prefix}&cHai raggiunto il massimo di &6{max}&c inserzioni."
+sell-error: "{prefix}&cErrore durante la pubblicazione. Oggetto restituito."
+sell-success: "{prefix}&aHai messo in vendita &f{item} &ax{amount} &aa &6{price} &amonete."
+
+claim-success: "{prefix}&aHai riscosso &6{amount} &amonete: {breakdown}"
+claim-partial: "{prefix}&eInventario pieno: restano &6{remaining} &emonete da riscuotere."
+claim-none: "{prefix}&cNon hai guadagni da riscuotere."
+claim-no-space: "{prefix}&cNon hai spazio nell'inventario per riscuotere."
+earnings-pending: "{prefix}&aHai &6{amount} &amonete da riscuotere. Apri /ah."
+
+tier-max: "{prefix}&cMassimo raggiunto per questo taglio (&6{max}&c)."

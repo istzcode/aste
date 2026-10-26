@@ -1,0 +1,193 @@
+# ============================================================
+#  PlatipoAste - config.yml
+#  Testi: supportano codici legacy (&a, &#RRGGBB) e MiniMessage (<red>, <gradient:...>)
+#  Suoni: usare la chiave namespaced di Minecraft (es. "ui.button.click")
+# ============================================================
+
+settings:
+  max-listings-per-player: 10     # 0 = illimitato
+  min-price: 1
+  max-price: 100000000
+  max-per-tier: 999               # massimo di pezzi per taglio nella GUI prezzo
+  use-shulker-boxes: true         # scansiona/deposita anche dentro le Shulker Box
+  allow-selling-currency: false   # permette di mettere in vendita gli item valuta
+  click-cooldown-ms: 150          # anti doppio-click nelle GUI
+  blacklist-materials:
+    - BEDROCK
+    - BARRIER
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+    - DEBUG_STICK
+    - LIGHT
+
+format:
+  date: "dd/MM HH:mm"
+  breakdown-entry: "&e{amount}x &f{name}"
+  breakdown-separator: "&7, "
+  breakdown-empty: "&cNessuna moneta"
+  state-on: "&aAttivo"
+  state-off: "&cDisattivo"
+
+sounds:
+  click:   { enabled: true, sound: "ui.button.click",            volume: 1.0, pitch: 1.0 }
+  page:    { enabled: true, sound: "item.book.page_turn",        volume: 1.0, pitch: 1.0 }
+  success: { enabled: true, sound: "entity.player.levelup",      volume: 0.8, pitch: 1.2 }
+  error:   { enabled: true, sound: "entity.villager.no",         volume: 1.0, pitch: 1.0 }
+
+# ------------------------------------------------------------
+#  VALUTA FISICA
+#  "item" viene scritto da /ahsetcurrency. Finché manca, viene usato "default-item"
+#  (SOLO per test: imposta gli item reali con /ahsetcurrency!)
+# ------------------------------------------------------------
+currency:
+  moneta:
+    name: "Moneta"
+    value: 1
+    default-item: { material: GOLD_NUGGET, name: "&6Moneta", lore: ["&7Valore: &e1"] }
+  pila:
+    name: "Pila di Monete"
+    value: 16
+    default-item: { material: GOLD_INGOT, name: "&6Pila di Monete", lore: ["&7Valore: &e16"] }
+  sacco:
+    name: "Sacco di Monete"
+    value: 256
+    default-item: { material: GOLD_BLOCK, name: "&6Sacco di Monete", lore: ["&7Valore: &e256"] }
+  liquida:
+    name: "Moneta Liquida"
+    value: 4096
+    default-item: { material: NETHER_STAR, name: "&bMoneta Liquida", lore: ["&7Valore: &e4096"] }
+
+# ------------------------------------------------------------
+#  GUI
+#  Ogni bottone: slot, material, name, lore, amount, custom-model-data, glow
+# ------------------------------------------------------------
+gui:
+  main:
+    title: "&8Casa d'Aste &7(&f{page}&7/&f{pages}&7)"
+    rows: 6
+    filler: { enabled: true, material: GRAY_STAINED_GLASS_PANE, name: " " }
+    auction-slots: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44]
+    hide-unavailable-nav: true
+    auction-lore:
+      - ""
+      - "&7Venditore: &f{seller}"
+      - "&7Prezzo: &6{price} &7monete"
+      - "&7Costo: {price_breakdown}"
+      - "&7Inserita: &f{date}"
+      - ""
+      - "&aClicca per acquistare!"
+    own-lore:
+      - ""
+      - "&7Prezzo: &6{price} &7monete"
+      - "&7Costo: {price_breakdown}"
+      - "&7Inserita: &f{date}"
+      - ""
+      - "&cClicca per ritirare la tua inserzione"
+    buttons:
+      previous:
+        slot: 45
+        material: ARROW
+        name: "&e&lPagina precedente"
+        lore: ["&7Vai alla pagina &f{prev}"]
+      next:
+        slot: 53
+        material: ARROW
+        name: "&e&lPagina successiva"
+        lore: ["&7Vai alla pagina &f{next}"]
+      sell:
+        slot: 47
+        material: EMERALD
+        name: "&a&lMetti in Vendita"
+        lore: ["&7Clicca per vendere un oggetto"]
+      my-items:
+        slot: 49
+        material: CHEST
+        name: "&b&lI Miei Oggetti"
+        lore: ["&7Filtro: {state}", "", "&7Clicca per attivare/disattivare"]
+      claim:
+        slot: 51
+        material: GOLD_INGOT
+        name: "&6&lRiscuoti Guadagni"
+        lore: ["&7Guadagni in attesa: &e{pending} &7monete", "", "&7Clicca per riscuotere"]
+
+  select:
+    title: "&8Seleziona l'oggetto da vendere"
+    rows: 3
+    filler: { enabled: true, material: BLACK_STAINED_GLASS_PANE, name: " " }
+    preview:
+      slot: 13
+      empty:
+        material: ITEM_FRAME
+        name: "&7Nessun oggetto selezionato"
+        lore:
+          - "&7Clicca un oggetto nel tuo inventario"
+          - "&7Click sinistro: &fl'intera pila"
+          - "&7Click destro: &f1 solo pezzo"
+      selected-lore:
+        - ""
+        - "&aOggetto selezionato"
+        - "&7Quantità: &f{amount}"
+    buttons:
+      confirm:
+        slot: 22
+        material: LIME_DYE
+        name: "&a&lConferma selezione"
+        lore: ["&7Procedi alla scelta del prezzo"]
+      back:
+        slot: 18
+        material: RED_DYE
+        name: "&c&lAnnulla"
+        lore: ["&7Torna al menu principale"]
+
+  price:
+    title: "&8Imposta il prezzo"
+    rows: 5
+    filler: { enabled: true, material: BLACK_STAINED_GLASS_PANE, name: " " }
+    preview:
+      slot: 4
+      lore:
+        - ""
+        - "&7Prezzo totale: &6{price} &7monete"
+        - "&7Costo: {breakdown}"
+    shift-step: 10
+    add-button:
+      material: LIME_STAINED_GLASS_PANE
+      name: "&a+{value}"
+      lore: ["&7Aggiunge &e1x &f{currency}", "&8Shift-click: +{shift_step}"]
+    remove-button:
+      material: RED_STAINED_GLASS_PANE
+      name: "&c-{value}"
+      lore: ["&7Rimuove &e1x &f{currency}", "&8Shift-click: -{shift_step}"]
+    display-lore:
+      - ""
+      - "&7Quantità: &e{count}"
+      - "&7Subtotale: &6{subtotal}"
+    tiers:
+      moneta:  { add-slot: 10, display-slot: 19, remove-slot: 28 }
+      pila:    { add-slot: 12, display-slot: 21, remove-slot: 30 }
+      sacco:   { add-slot: 14, display-slot: 23, remove-slot: 32 }
+      liquida: { add-slot: 16, display-slot: 25, remove-slot: 34 }
+    buttons:
+      confirm:
+        slot: 40
+        material: LIME_DYE
+        name: "&a&lConferma Inserzione"
+        lore: ["&7Pubblica l'oggetto a &6{price} &7monete"]
+      back:
+        slot: 36
+        material: ARROW
+        name: "&e&lIndietro"
+        lore: ["&7Torna alla selezione oggetto"]
+      reset:
+        slot: 38
+        material: BARRIER
+        name: "&c&lAzzera prezzo"
+        lore: ["&7Riporta tutte le quantità a 0"]
+      cancel:
+        slot: 44
+        material: RED_DYE
+        name: "&c&lAnnulla"
+        lore: ["&7Torna al menu principale"]

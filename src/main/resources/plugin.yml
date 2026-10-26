@@ -1,0 +1,22 @@
+name: PlatipoAste
+version: 1.0.0
+main: it.platipo.aste.PlatipoAste
+api-version: '1.21'
+description: Auction House con valuta fisica a tassi di cambio configurabili
+authors: [Platipo]
+commands:
+  ah:
+    description: Apre la Casa d'Aste
+    aliases: [auctionhouse, aste]
+    permission: platipoaste.use
+  ahsetcurrency:
+    description: Imposta l'item di una valuta usando l'item in mano
+    usage: /ahsetcurrency <moneta|pila|sacco|liquida>
+    permission: platipoaste.admin
+permissions:
+  platipoaste.use:
+    default: true
+  platipoaste.sell:
+    default: true
+  platipoaste.admin:
+    default: op
