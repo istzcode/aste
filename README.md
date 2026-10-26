@@ -4,8 +4,6 @@ Casa d'Aste (Auction House) per **Purpur / Paper 1.21.11** basata su **valuta fi
 
 Tutto è configurabile da `config.yml` e `messages.yml`: messaggi, GUI, slot, materiali, lore, suoni, valori delle monete e limiti.
 
-> **Stato del progetto:** il codice non è stato ancora compilato né testato su un server reale. Alla prima build potrebbero servire piccole correzioni.
-
 ---
 
 ## Indice
@@ -283,4 +281,4 @@ PlatipoAste/
 
 ## Licenza
 
-Aggiungi qui la licenza che preferisci (es. MIT).
+MIT
